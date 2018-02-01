@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import RemoveMovie from './RemoveMovie';
+
 
 class Movie extends Component {
   render() {
@@ -10,6 +12,7 @@ class Movie extends Component {
         </div>
         <p>({this.props.meta.year})</p>
         <p>{this.props.meta.description}</p>
+        <RemoveMovie movie={this.props.movie} remove={this.props.remove}/>
       </div>
     )
   };

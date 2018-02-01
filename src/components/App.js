@@ -6,6 +6,7 @@ import {initialMovies} from '../movies';
 import {additionalMovies} from '../movies';
 import AddMovie from './AddMovie';
 
+
 class App extends Component {
 
   constructor() {
@@ -17,6 +18,7 @@ class App extends Component {
 
     this.loadAdditionalMovies = this.loadAdditionalMovies.bind(this);
     this.addMovieToGallery = this.addMovieToGallery.bind(this);
+    this.removeMovieFromGallery = this.removeMovieFromGallery.bind(this);
   }
 
   loadAdditionalMovies() {
@@ -35,6 +37,13 @@ class App extends Component {
     this.setState({movies: newMovies});
   }
 
+  removeMovieFromGallery( movie ) {
+    var currentMovies = {...this.state.movies};
+    delete currentMovies[movie];
+    this.setState({movies: currentMovies});
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -46,7 +55,8 @@ class App extends Component {
           {
             Object
               .keys(this.state.movies)
-              .map(key => <Movie key={key} meta={this.state.movies[key]} />)
+              .map(key => <Movie key={key} meta={this.state.movies[key]} movie={key} remove={this.removeMovieFromGallery}/>
+              )
           }
         </div>
         <div className="add-movies">
