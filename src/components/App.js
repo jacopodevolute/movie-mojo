@@ -3,6 +3,7 @@ import '../App.css';
 import Header from './Header';
 import Movie from './Movie';
 import {initialMovies} from '../movies';
+import {additionalMovies} from '../movies';
 
 class App extends Component {
 
@@ -12,8 +13,16 @@ class App extends Component {
     this.state = {
       movies: initialMovies
     };
+
+    this.loadAdditionalMovies = this.loadAdditionalMovies.bind(this);
   }
 
+  loadAdditionalMovies() {
+    var currentMovies = { ...this.state.movies };
+    var newMovies = Object.assign( currentMovies, additionalMovies );
+
+    this.setState({movies: newMovies});
+  }
 
   render() {
     return (
@@ -28,6 +37,9 @@ class App extends Component {
               .keys(this.state.movies)
               .map(key => <Movie key={key} meta={this.state.movies[key]} />)
           }
+        </div>
+        <div className="add-movies">
+          <button onClick={this.loadAdditionalMovies}>Load more...</button>
         </div>
       </div>
     );
