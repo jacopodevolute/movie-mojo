@@ -5,6 +5,16 @@ import Movie from './Movie';
 import {initialMovies} from '../movies';
 
 class App extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      movies: initialMovies
+    };
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -13,14 +23,12 @@ class App extends Component {
           Welcome to the 'Movie Mojo' React app!
         </p>
         <div className="movies">
-          <Movie title="Il Buono, il Brutto e il Cattivo" poster="./posters/il-buono-il-brutto-il-cattivo.jpg" year="1966" description="Spaghetti Western" />
-          <Movie title="Jaws" poster="./posters/jaws.jpg" year="1975" description="Mystery/Thriller" />
-          <Movie title="Back To The Future" poster="./posters/back-to-the-future.jpg" year="1985" description="Science Fiction" />
-          <Movie title="Full Metal Jacket" poster="./posters/full-metal-jacket.jpg" year="1987" description="War Drama" />
-
+          {
+            Object
+              .keys(this.state.movies)
+              .map(key => <Movie key={key} meta={this.state.movies[key]} />)
+          }
         </div>
-
-        <Movie />
       </div>
     );
   }
