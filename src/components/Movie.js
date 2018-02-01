@@ -8,7 +8,7 @@ class Movie extends Component {
         <div>
           <img width="200" src={this.props.meta.poster} alt={this.props.meta.title}/>
         </div>
-        <p>{this.props.meta.year}</p>
+        <p>({this.props.meta.year})</p>
         <p>{this.props.meta.description}</p>
       </div>
     )
