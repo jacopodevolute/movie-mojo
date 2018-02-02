@@ -5,7 +5,10 @@ class AddMovie extends Component {
     super(props);
 
     this.state = {
-      file: './posters/coming-soon.png'
+      title: '',
+      year: '',
+      description: '',
+      poster: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,16 +17,19 @@ class AddMovie extends Component {
 
   handleChange(e) {
     e.preventDefault();
-    this.setState({ file: e.target.value });
+    const value = e.target.value;
+    const name = e.target.name;
+
+    this.setState({ [name]: value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const movie =  {
-      title: this.title.value,
-      year: this.year.value,
-      description: this.description.value,
-      poster: this.state.file
+      title: this.state.title,
+      year: this.state.year,
+      description: this.state.description,
+      poster: this.state.poster ? this.state.poster : './posters/coming-soon.png'
     };
 
     this.props.addMovie(movie);
@@ -33,10 +39,10 @@ class AddMovie extends Component {
     return (
       <form className="movie-form" onSubmit={(e) => this.handleSubmit(e)}>
         <p>Add a Movie</p>
-        <input ref={ ( input ) => this.title = input } type="text" placeholder="Title" />
-        <input ref={ ( input ) => this.year = input } type="text" placeholder="Year" />
-        <input value={this.state.file} onChange={this.handleChange} type="text" placeholder="Poster" />
-        <textarea ref={ ( input ) => this.description = input } placeholder="Description">
+        <input name="title" value={this.state.title} onChange={this.handleChange} type="text" placeholder="Title" />
+        <input name="year" value={this.state.year} onChange={this.handleChange} type="text" placeholder="Year" />
+        <input name="poster" value={this.state.poster} onChange={this.handleChange} type="text" placeholder="Poster" />
+        <textarea name="description" value={this.state.description} onChange={this.handleChange} placeholder="Description">
         </textarea>
         <button type="submit">Add Movie</button>
       </form>
