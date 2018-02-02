@@ -18,4 +18,4 @@ class Movie extends Component {
   };
 }
 
-export default Movie;
+export default Movie

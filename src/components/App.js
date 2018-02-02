@@ -9,8 +9,8 @@ import AddMovie from './AddMovie';
 
 class App extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movies: initialMovies
@@ -22,23 +22,23 @@ class App extends Component {
   }
 
   loadAdditionalMovies() {
-    var currentMovies = { ...this.state.movies };
+    const currentMovies = { ...this.state.movies };
     var newMovies = Object.assign( currentMovies, additionalMovies );
 
     this.setState({movies: newMovies});
   }
 
   addMovieToGallery( movie ) {
-    var ts = Date.now();
-    var newMovie = {};
+    const ts = Date.now();
+    const newMovie = {};
     newMovie['movie'+ts] = movie;
-    var currentMovies = {...this.state.movies };
-    var newMovies = Object.assign( currentMovies, newMovie);
+    const currentMovies = {...this.state.movies };
+    const newMovies = Object.assign( currentMovies, newMovie);
     this.setState({movies: newMovies});
   }
 
   removeMovieFromGallery( movie ) {
-    var currentMovies = {...this.state.movies};
+    const currentMovies = {...this.state.movies};
     delete currentMovies[movie];
     this.setState({movies: currentMovies});
 
@@ -56,7 +56,7 @@ class App extends Component {
             Object
               .keys(this.state.movies)
               .map(key => <Movie key={key} meta={this.state.movies[key]} movie={key} remove={this.removeMovieFromGallery}/>
-              )
+            )
           }
         </div>
         <div className="add-movies">

@@ -4,7 +4,7 @@ class RemoveMovie extends Component {
 
   removeMovie(e) {
     e.preventDefault();
-    var movie = this.props.movie
+    const movie = this.props.movie
     this.props.remove(movie)
   }
 
