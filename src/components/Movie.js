@@ -12,7 +12,7 @@ class Movie extends Component {
         </div>
         <p>({this.props.meta.year})</p>
         <p>{this.props.meta.description}</p>
-        <RemoveMovie movie={this.props.movie} remove={this.props.remove}/>
+        <RemoveMovie movie={this.props.movie} remove={this.props.removeMovie}/>
       </div>
     )
   };

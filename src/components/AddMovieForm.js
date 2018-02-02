@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AddMovie extends Component {
+class AddMovieForm extends Component {
   constructor(props) {
     super(props);
 
@@ -50,4 +50,4 @@ class AddMovie extends Component {
   }
 }
 
-export default AddMovie;
+export default AddMovieForm

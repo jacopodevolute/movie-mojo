@@ -4,7 +4,7 @@ import Header from './Header';
 import Movie from './Movie';
 import {initialMovies} from '../movies';
 import {additionalMovies} from '../movies';
-import AddMovie from './AddMovie';
+import AddMovieForm from './AddMovieForm';
 
 
 class App extends Component {
@@ -55,14 +55,14 @@ class App extends Component {
           {
             Object
               .keys(this.state.movies)
-              .map(key => <Movie key={key} meta={this.state.movies[key]} movie={key} remove={this.removeMovieFromGallery}/>
+              .map(key => <Movie key={key} meta={this.state.movies[key]} movie={key} removeMovie={this.removeMovieFromGallery}/>
             )
           }
         </div>
         <div className="add-movies">
           <button onClick={this.loadAdditionalMovies}>Load more...</button>
         </div>
-        <AddMovie addMovie={this.addMovieToGallery} />
+        <AddMovieForm addMovie={this.addMovieToGallery} />
       </div>
     );
   }
