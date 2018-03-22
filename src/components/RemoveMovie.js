@@ -9,14 +9,16 @@ class RemoveMovie extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    const movie = this.props.movie
-    this.props.remove(movie)
+    const movie = this.props.movie;
+    this.props.remove(movie);
   }
 
   render() {
-    return(
-      <button type="submit" onClick={this.handleClick}>Remove</button>
-    )
+    return (
+      <button type="submit" onClick={this.handleClick}>
+        Remove
+      </button>
+    );
   }
 }
 

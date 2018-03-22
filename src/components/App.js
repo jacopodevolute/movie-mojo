@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import '../App.css';
 import Header from './Header';
 import Movie from './Movie';
-import {initialMovies} from '../movies';
-import {additionalMovies} from '../movies';
+import { initialMovies } from '../movies';
+import { additionalMovies } from '../movies';
 import AddMovieForm from './AddMovieForm';
 
-
 class App extends Component {
-
   constructor(props) {
     super(props);
 
@@ -23,41 +21,40 @@ class App extends Component {
 
   loadAdditionalMovies() {
     const currentMovies = { ...this.state.movies };
-    var newMovies = Object.assign( currentMovies, additionalMovies );
+    var newMovies = Object.assign(currentMovies, additionalMovies);
 
-    this.setState({movies: newMovies});
+    this.setState({ movies: newMovies });
   }
 
-  addMovieToGallery( movie ) {
+  addMovieToGallery(movie) {
     const ts = Date.now();
     const newMovie = {};
-    newMovie['movie'+ts] = movie;
-    const currentMovies = {...this.state.movies };
-    const newMovies = Object.assign( currentMovies, newMovie);
-    this.setState({movies: newMovies});
+    newMovie['movie' + ts] = movie;
+    const currentMovies = { ...this.state.movies };
+    const newMovies = Object.assign(currentMovies, newMovie);
+    this.setState({ movies: newMovies });
   }
 
-  removeMovieFromGallery( movie ) {
-    const currentMovies = {...this.state.movies};
+  removeMovieFromGallery(movie) {
+    const currentMovies = { ...this.state.movies };
     delete currentMovies[movie];
-    this.setState({movies: currentMovies});
-
+    this.setState({ movies: currentMovies });
   }
 
   render() {
     return (
       <div className="App">
         <Header text="Jacopo's Movie Mojo App!" />
-        <p className="App-intro">
-          Welcome to the 'Movie Mojo' React app!
-        </p>
+        <p className="App-intro">Welcome to the 'Movie Mojo' React app!</p>
         <div className="movies">
-          {
-            Object
-              .keys(this.state.movies)
-              .map(key => <Movie key={key} meta={this.state.movies[key]} movie={key} removeMovie={this.removeMovieFromGallery}/>
-            )
-          }
+          {Object.keys(this.state.movies).map(key => (
+            <Movie
+              key={key}
+              meta={this.state.movies[key]}
+              movie={key}
+              removeMovie={this.removeMovieFromGallery}
+            />
+          ))}
         </div>
         <div className="add-movies">
           <button onClick={this.loadAdditionalMovies}>Load more...</button>
